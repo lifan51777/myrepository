@@ -34,20 +34,26 @@
     <!-- ========== Global Forward Definitions ============================= -->
 
     <global-forwards>
-    	<forward name="welcome" path="/welcome.html"></forward>
+    	<forward name="registration" path="/userRegistraton.jsp"></forward>
+    	<forward name="display" path="/displayAllUser.do"></forward>
     </global-forwards>
 
     <!-- ========== Action Mapping Definitions ============================= -->
     <action-mappings>
-    	<action 
-    		path="/userRegistration" 
+    	<action path="/userRegistration"
     		type="org.fanfan.struts.actions.UserRegistrationAction"
-    		name="userRegistrationForm"
-    		input="/userRegistraton.jsp">
+    		name="userRegistrationForm" input="/userRegistraton.jsp"
+    		attribute="user"
+    		validate="true">
     		<set-property value="true" property="cancellable" />
-    		<exception type="java.lang.Exception" key="userRegistration.exception" path="/userRegistraton.jsp"></exception>
+    		<exception type="java.lang.Exception"
+    			key="userRegistration.exception" path="/userRegistraton.jsp">
+    		</exception>
     		<forward name="success" path="/registration-success.jsp"></forward>
-   		</action>
+    	</action>
+    	<action path="/displayAllUser" type="org.fanfan.struts.actions.DisplayAllUserAction">
+    		<forward name="display" path="/displayAllUser.jsp"></forward>
+    	</action>
 
     </action-mappings>
 
